@@ -28,6 +28,10 @@
   grid-template-rows: auto 1fr auto;
 }
 
+.hint {
+  color: var(--muted);
+}
+
 .header {
   display: flex;
   align-items: center;

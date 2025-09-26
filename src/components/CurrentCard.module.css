@@ -1,19 +1,71 @@
 /* src/components/CurrentCard.module.css */
-.card{
-  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
+.card {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 20px;
-  animation: fade .4s ease both;
+  animation: fade 0.4s ease both;
 }
-@keyframes fade { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none} }
 
-.top{ display:flex; align-items:baseline; gap:12px; margin-bottom: 8px; }
-.city{ font-size: clamp(1.25rem, 3vw, 1.6rem); }
-.desc{ color: var(--muted); }
+.icon {
+  width: 56px;
+  height: 56px;
+  object-fit: contain;
+  margin-left: auto;
+}
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
 
-.grid{ display:grid; grid-template-columns: 1fr auto; gap: 16px; align-items:center; }
-.bigTemp{ font-size: clamp(2.4rem, 6vw, 3.6rem); line-height:1; }
-.feels{ font-size: .95rem; color: var(--muted); margin-top: 6px; }
-.meta{ display:grid; gap:8px; color: var(--muted); }
+@keyframes fade {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.top {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+.city {
+  font-size: clamp(1.25rem, 3vw, 1.6rem);
+}
+.desc {
+  color: var(--muted);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+.bigTemp {
+  font-size: clamp(2.4rem, 6vw, 3.6rem);
+  line-height: 1;
+}
+.feels {
+  font-size: 0.95rem;
+  color: var(--muted);
+  margin-top: 6px;
+}
+.meta {
+  display: grid;
+  gap: 8px;
+  color: var(--muted);
+}
