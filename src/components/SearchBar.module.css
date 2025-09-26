@@ -1,0 +1,22 @@
+/* src/components/SearchBar.module.css */
+
+/* Search bar */
+.wrap{
+  display:flex; gap:8px; align-items:center;
+}
+.input{
+  min-width: 220px;
+  background: var(--card);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 10px 12px; border-radius: 10px;
+}
+.btn, .btnGhost{
+  border-radius: 10px; padding: 10px 14px; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: transform .15s ease, background .2s ease;
+}
+.btn{ background: var(--accent); color: #05152e; border-color: transparent; }
+.btn:hover{ transform: translateY(-1px); }
+.btnGhost{ background: transparent; color: var(--text); }
+.btnGhost:hover{ background: rgba(255,255,255,0.06); }

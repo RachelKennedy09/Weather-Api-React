@@ -1,0 +1,64 @@
+/* src/App.module.css */
+/* tokens + simple responsive grid, soft cards, focus rings. */
+/* solid, modern feel similar to Weather Network: dark, clean, card-style layout. */
+
+:root {
+  --bg: #0a0f1f; /* deep navy */
+  --card: #111831; /* card surface */
+  --text: #e7eefc; /* near-white */
+  --muted: #9db0d0; /* muted text */
+  --accent: #6aa8ff; /* accent for links/buttons */
+  --ring: #9ec2ff; /* focus ring */
+  --radius: 16px;
+  --shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+  --gap: 16px;
+}
+
+/* app.jsx */
+.app {
+  min-height: 100svh;
+  background: radial-gradient(
+      1200px 600px at 20% -10%,
+      #1b2a52 0%,
+      transparent 70%
+    ),
+    var(--bg);
+  color: var(--text);
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px clamp(16px, 5vw, 48px);
+}
+
+.brand {
+  font-size: clamp(1.25rem, 2.5vw, 1.6rem);
+  letter-spacing: 0.5px;
+}
+
+.controls {
+  display: flex;
+  gap: var(--gap);
+  flex-wrap: wrap;
+}
+
+.main {
+  padding: 20px clamp(16px, 5vw, 48px) 48px;
+  display: grid;
+  gap: 24px;
+}
+
+.footer {
+  padding: 16px clamp(16px, 5vw, 48px);
+  color: var(--muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}

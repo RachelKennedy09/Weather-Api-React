@@ -1,0 +1,9 @@
+/* src/components/Loader.module.css */
+.wrap{ display:flex; gap:10px; align-items:center; color: var(--muted); }
+.spinner{
+  width: 16px; height:16px; border-radius:50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  border-top-color: var(--accent);
+  animation: spin 1s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg);} }

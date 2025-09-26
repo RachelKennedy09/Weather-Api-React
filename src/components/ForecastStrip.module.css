@@ -1,0 +1,16 @@
+/* src/components/ForecastStrip.module.css */
+.strip{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
+  gap: 12px;
+}
+.dayCard{
+  background: var(--card);
+  border:1px solid rgba(255,255,255,0.08);
+  border-radius: 14px; padding: 12px;
+  text-align: center; color: var(--text);
+  transition: transform .15s ease, background .2s ease;
+}
+.dayCard:hover{ transform: translateY(-2px); }
+.day{ color: var(--muted); margin-bottom: 6px; }
+.temps{ font-size: 1.05rem; }

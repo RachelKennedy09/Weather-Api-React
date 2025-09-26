@@ -1,0 +1,8 @@
+/* src/components/UnitToggle.module.css */
+.toggle{ display:flex; gap:6px; }
+.btn{
+  background: var(--card); color: var(--text);
+  border: 1px solid rgba(255,255,255,0.12);
+  padding: 8px 12px; border-radius: 999px; cursor: pointer;
+}
+.active{ background: var(--accent); color: #031022; border-color: transparent; }

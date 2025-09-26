@@ -1,0 +1,6 @@
+/* src/components/ErrorBanner.module.css */
+.err{
+  background: #3b0b14; color: #ffd4da;
+  border: 1px solid #7a1f2e; padding: 12px 14px;
+  border-radius: 10px;
+}
