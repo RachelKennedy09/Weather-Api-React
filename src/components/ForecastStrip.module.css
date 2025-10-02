@@ -1,33 +1,51 @@
-/* src/components/ForecastStrip.module.css */
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for ForecastStrip (5-day forecast strip)
+   PURPOSE: Show multiple small day cards in a responsive grid layout.
+   HOW IT FITS IN:
+   - Used in ForecastStrip.jsx to render daily forecast cards
+   - Designed to scale across mobile and desktop with auto-fit grid
+/*-------------------------------------------------------------------------*/
+
 .strip {
+  /* Responsive grid: auto-fit as many 120px+ cards as possible per row */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 12px;
+  gap: 12px; /* space between cards */
 }
+
 .dayCard {
+  /* Card styling */
   background: var(--card);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
   padding: 12px;
   text-align: center;
   color: var(--text);
+
+  /* Smooth hover animation for interactivity */
   transition: transform 0.15s ease, background 0.2s ease;
 }
+
 .dayCard:hover {
+  /* Subtle lift on hover → feels tactile */
   transform: translateY(-2px);
 }
+
 .day {
+  /* Muted weekday label at the top */
   color: var(--muted);
   margin-bottom: 6px;
 }
 .temps {
+  /* Slightly larger text for hi/lo temperatures */
   font-size: 1.05rem;
 }
 
-.smallIcon{
+.smallIcon {
+  /* Compact weather icon centered in card */
   width: 38px;
   height: 38px;
-  object-fit: contain;
+  object-fit: contain; /* keeps aspect ratio */
   display: block;
-  margin: 4px auto;
+  margin: 4px auto; /* center horizontally */
 }

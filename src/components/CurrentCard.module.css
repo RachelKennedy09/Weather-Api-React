@@ -1,34 +1,45 @@
-/* src/components/CurrentCard.module.css */
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for CurrentCard component
+   PURPOSE: Gives the current conditions card a polished, readable style.
+   HOW IT FITS IN:
+   - Paired with CurrentCard.jsx
+   - Uses theme CSS variables (e.g., --radius, --shadow, --muted) so style
+     is consistent and tweakable at the theme level.
+/*-------------------------------------------------------------------------*/
 .card {
+  /* Subtle gradient background (top to bottom fade) */
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.04),
     rgba(255, 255, 255, 0.02)
   );
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  border-radius: var(--radius); /* consistent rounded corners */
+  box-shadow: var(--shadow); /* global theme shadow for depth */
   padding: 20px;
+
+  /* Fade-in animation when card mounts */
   animation: fade 0.4s ease both;
 }
 
 .icon {
   width: 56px;
   height: 56px;
-  object-fit: contain;
-  margin-left: auto;
+  object-fit: contain; /* prevents stretching of OWM icon */
+  margin-left: auto; /* push icon to the right in flex container */
 }
 .top {
+  /* Layout: city/description on left, icon on right */
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: baseline; /* aligns city text + description nicely */
+  gap: 12px;
   margin-bottom: 8px;
 }
 
 @keyframes fade {
   from {
     opacity: 0;
-    transform: translateY(6px);
+    transform: translateY(6px); /* subtle slide-up entrance */
   }
   to {
     opacity: 1;
@@ -36,35 +47,41 @@
   }
 }
 
-.top {
-  display: flex;
-  align-items: baseline;
-  gap: 12px;
-  margin-bottom: 8px;
-}
 .city {
+  /* Responsive font size with clamp:
+     - min: 1.25rem, scales with viewport (3vw), max: 1.6rem */
   font-size: clamp(1.25rem, 3vw, 1.6rem);
 }
+
 .desc {
+  /* Secondary muted style for weather description */
   color: var(--muted);
 }
 
 .grid {
+  /* Two-column grid:
+     - Left: big temperature
+     - Right: meta info (humidity, wind, updated time) */
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 16px;
   align-items: center;
 }
+
 .bigTemp {
+  /* Large responsive temperature text */
   font-size: clamp(2.4rem, 6vw, 3.6rem);
   line-height: 1;
 }
+
 .feels {
+  /* Smaller "feels like" text under main temp */
   font-size: 0.95rem;
   color: var(--muted);
   margin-top: 6px;
 }
 .meta {
+  /* Right-hand column with stacked meta items */
   display: grid;
   gap: 8px;
   color: var(--muted);

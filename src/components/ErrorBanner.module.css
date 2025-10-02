@@ -1,6 +1,24 @@
-/* src/components/ErrorBanner.module.css */
-.err{
-  background: #3b0b14; color: #ffd4da;
-  border: 1px solid #7a1f2e; padding: 12px 14px;
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for ErrorBanner component
+   PURPOSE: Provide a clear, accessible, and noticeable style for errors.
+   HOW IT FITS IN:
+   - Paired with ErrorBanner.jsx
+   - Applied whenever an error message is passed down from App.jsx
+/*-------------------------------------------------------------------------*/
+
+.err {
+  /* Dark red background to signal error (not too bright, avoids glare) */
+  background: #3b0b14;
+
+  /* Light pink text color for strong contrast on dark background */
+  color: #ffd4da;
+
+  /* Border in a medium red tone to define the alert box */
+  border: 1px solid #7a1f2e;
+
+  /* Comfortable padding so text doesn’t feel cramped */
+  padding: 12px 14px;
+
+  /* Rounded corners for a softer, modern look */
   border-radius: 10px;
 }

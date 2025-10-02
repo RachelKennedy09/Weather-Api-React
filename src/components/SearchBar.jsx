@@ -1,30 +1,36 @@
-//--------------------------------------------------------//
-// Props: onSubmit(string), onUseMyLocation()
-//What: Lets a user type a city name. Submitting that name back to the parent component
-//      optionally letting the user click use my location
-//Why: keep inputs controlled: submit on Enter/click
-//--------------------------------------------------------//
+//-------------------------------------------------------------------------//
+// WHAT: SearchBar component
+// PURPOSE: Lets the user type a city name to search for weather,
+//          or optionally click "Use my location".
+//
+// HOW IT FITS IN:
+// - Calls parent’s onSubmit(q) when user presses Enter or clicks "Search"
+// - Calls parent’s onUseMyLocation() when location button is clicked
+// - Keeps its own input value state (controlled input pattern)
+//
+// KEY CHOICES / WHY:
+// - Controlled <input>: keeps React in charge of input value.
+// - e.preventDefault() stops default form refresh behavior on submit.
+// - .trim() removes stray whitespace so “ Banff ” still works.
+// - Guard clause (if no q) avoids wasting API calls on empty strings.
+// - Accessibility: role="search", aria-labels on form + input + buttons.
+//-------------------------------------------------------------------------//
 
 import { useState } from "react";
 import styles from "./SearchBar.module.css";
 
-//This component is a search bar. It keeps track of what you type.
-// When you press enter, it stops the page from refreshing, cleans up the input, and tells the parent component:
-// “Here’s the city name they typed—go fetch the weather!”
 export default function SearchBar({ onSubmit, onUseMyLocation }) {
-  //value is empty string(text) in input box
+  // Local state for input field
   const [value, setValue] = useState("");
 
-  //function when form is submitted
-  //stops reload after submitted
+  // Handles form submit -> passes cleaned-up query to parent
   const handleSubmit = (e) => {
-    e.preventDefault();
-    //trimming extra space in input after writing
+    e.preventDefault(); // stop full page reload
+
     const q = value.trim();
-    //if user submitted without typing anything exit early and don't call parent function
-    if (!q) return;
-    //finally call function
-    onSubmit(q);
+
+    if (!q) return; // skip empty submissions
+    onSubmit(q); // tell parent component “fetch this city’s weather”
   };
   //-------------------------------------------------//
 
@@ -32,13 +38,13 @@ export default function SearchBar({ onSubmit, onUseMyLocation }) {
     <form
       className={styles.wrap}
       onSubmit={handleSubmit}
-      role="search"
+      role="search" // Accessibility: defines region as search
       aria-label="Search city"
     >
       <input
         className={styles.input}
         placeholder="Search city (e.g., Banff)"
-        value={value}
+        value={value} // controlled input value
         onChange={(e) => setValue(e.target.value)}
         aria-label="City name"
       />
@@ -47,7 +53,7 @@ export default function SearchBar({ onSubmit, onUseMyLocation }) {
       </button>
       <button
         className={styles.btnGhost}
-        type="button"
+        type="button" // prevent acting as submit button
         onClick={onUseMyLocation}
         aria-label="Use my location"
       >

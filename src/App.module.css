@@ -1,67 +1,78 @@
-/* src/App.module.css */
-/* tokens + simple responsive grid, soft cards, focus rings. */
-/* solid, modern feel similar to Weather Network: dark, clean, card-style layout. */
+/*-------------------------------------------------------------------------*/
+/* WHAT: Global + App-level styles
+   PURPOSE: Define theme tokens (colors, spacing, radius, shadows) and
+            structure the root app layout (header, main, footer).
+   DESIGN GOAL: Solid, modern feel -> dark theme, card-style layout,
+                clean grid, responsive typography.
+/*-------------------------------------------------------------------------*/
 
+/* Theme tokens (global variables) */
 :root {
-  --bg: #0a0f1f; /* deep navy */
-  --card: #111831; /* card surface */
-  --text: #e7eefc; /* near-white */
-  --muted: #9db0d0; /* muted text */
-  --accent: #6aa8ff; /* accent for links/buttons */
-  --ring: #9ec2ff; /* focus ring */
-  --radius: 16px;
-  --shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-  --gap: 16px;
+  --bg: #0a0f1f; /* Deep navy background for app body */
+  --card: #111831; /* Dark card surface color */
+  --text: #e7eefc; /* Near-white for main text */
+  --muted: #9db0d0; /* Softer text color for secondary info */
+  --accent: #6aa8ff; /* Bright blue highlight for links/buttons */
+  --ring: #9ec2ff; /* Focus ring for accessibility */
+  --radius: 16px; /* Default border radius for cards/buttons */
+  --shadow: 0 12px 24px rgba(0, 0, 0, 0.35); /* strong card shadows */
+  --gap: 16px; /* standard spacing token */
 }
 
-/* app.jsx */
+/* Root app container (src/App.jsx -> <div className={styles.app}>) */
 .app {
-  min-height: 100svh;
+  min-height: 100svh; /* fill viewport height, use svh for mobile safe-area */
   background: radial-gradient(
       1200px 600px at 20% -10%,
       #1b2a52 0%,
       transparent 70%
     ),
-    var(--bg);
+    var(--bg); /* gradient accent over base navy */
   color: var(--text);
   display: grid;
-  grid-template-rows: auto 1fr auto;
+  grid-template-rows: auto 1fr auto; /* header, main, footer */
 }
 
 .hint {
-  color: var(--muted);
+  color: var(--muted); /* muted style for “search for a city” hint text */
 }
 
+/* Header bar: brand + controls row */
 .header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px clamp(16px, 5vw, 48px);
+  padding: 20px clamp(16px, 5vw, 48px); /* responsive side padding */
 }
 
 .brand {
+  /* Title text: responsive scaling */
   font-size: clamp(1.25rem, 2.5vw, 1.6rem);
-  letter-spacing: 0.5px;
+  letter-spacing: 0.5px; /* subtle tracking for polish */
 }
 
+/* Wrap search bar + unit toggle */
 .controls {
   display: flex;
   gap: var(--gap);
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* wrap if small screen */
 }
 
+/* Main content grid: error, skeleton, current card, forecast strip */
 .main {
   padding: 20px clamp(16px, 5vw, 48px) 48px;
   display: grid;
   gap: 24px;
 }
 
+/* Footer with last-updated timestamp */
 .footer {
   padding: 16px clamp(16px, 5vw, 48px);
   color: var(--muted);
   border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Accessibility: visible focus outline (keyboard users) */
 :focus-visible {
   outline: 3px solid var(--ring);
   outline-offset: 2px;

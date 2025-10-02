@@ -1,0 +1,80 @@
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for SkeletonForecast (loading placeholder for forecast strip)
+   PURPOSE: Show 5 small shimmer cards while the forecast is loading,
+            matching ForecastStrip layout.
+/*-------------------------------------------------------------------------*/
+
+.strip {
+  /* Responsive grid: auto-fit as many 120px+ cards as possible */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 12px;
+}
+
+.card {
+  /* Matches ForecastStrip day cards */
+  background: var(--card);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 12px;
+  text-align: center;
+}
+
+/* Base shimmer style for each placeholder block */
+.day,
+.icon,
+.temps {
+  position: relative;
+  overflow: hidden; /* contain the moving gradient */
+  background: rgba(255, 255, 255, 0.06); /* dull base color for skeleton */
+}
+
+/* Placeholder for weekday text */
+.day {
+  height: 14px;
+  width: 40%;
+  margin: 0 auto 8px; /* center horizontally + spacing below */
+  border-radius: 8px;
+}
+
+/* Placeholder for weather icon */
+.icon {
+  height: 38px;
+  width: 38px;
+  margin: 4px auto; /* center in card */
+  border-radius: 10px;
+}
+
+/* Placeholder for hi/lo temperatures */
+.temps {
+  height: 14px;
+  width: 70%;
+  margin: 8px auto 0;
+  border-radius: 8px;
+}
+
+/* Shimmer "shine" animation overlay applied to all blocks */
+.day::after,
+.icon::after,
+.temps::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+
+  /* Gradient that sweeps across to simulate light reflection */
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+  animation: sh 1.2s infinite;
+}
+
+/* Keyframes: sweep gradient left -> right forever */
+@keyframes sh {
+  to {
+    transform: translateX(100%);
+  }
+}

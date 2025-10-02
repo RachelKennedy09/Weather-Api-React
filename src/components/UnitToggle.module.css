@@ -1,8 +1,30 @@
-/* src/components/UnitToggle.module.css */
-.toggle{ display:flex; gap:6px; }
-.btn{
-  background: var(--card); color: var(--text);
-  border: 1px solid rgba(255,255,255,0.12);
-  padding: 8px 12px; border-radius: 999px; cursor: pointer;
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for UnitToggle (°C / °F switch)
+   PURPOSE: Give the unit toggle a clear, pill-like button style
+            with active state highlighting.
+/*-------------------------------------------------------------------------*/
+
+.toggle {
+  display: flex; /* lay out buttons side by side */
+  gap: 6px; /* small space between them */
 }
-.active{ background: var(--accent); color: #031022; border-color: transparent; }
+
+.btn {
+  /* Default (inactive) button style */
+  background: var(--card); /* matches app card theme */
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 8px 12px;
+
+  /* Full pill shape for toggle look */
+  border-radius: 999px;
+
+  cursor: pointer; /* clear affordance */
+}
+
+.active {
+  /* Highlighted state for the selected unit */
+  background: var(--accent); /* app’s accent color (bright highlight) */
+  color: #031022; /* dark text for contrast on accent bg */
+  border-color: transparent; /* removes subtle border when active */
+}

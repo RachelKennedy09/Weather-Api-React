@@ -1,22 +1,55 @@
-/* src/components/SearchBar.module.css */
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for SearchBar component
+   PURPOSE: Input + two buttons (search + geolocation)
+   HOW IT FITS IN:
+   - Used in SearchBar.jsx inside App header
+   - Gives a modern, accessible form look with hover/active states
+/*-------------------------------------------------------------------------*/
 
-/* Search bar */
-.wrap{
-  display:flex; gap:8px; align-items:center;
+/* Container: lays out input + buttons in one row */
+.wrap {
+  display: flex;
+  gap: 8px; /* space between input and buttons */
+  align-items: center; /* vertically center everything */
 }
-.input{
-  min-width: 220px;
-  background: var(--card);
+.input {
+  min-width: 220px; /* ensures input doesn’t collapse too small */
+  background: var(--card); /* matches app theme card background */
+  color: var(--text); /* main theme text color */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 10px 12px;
+  border-radius: 10px; /* smooth rounded corners */
+}
+
+/* Shared button base styles */
+.btn,
+.btnGhost {
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+
+  /* Smooth hover animations */
+  transition: transform 0.15s ea se, background 0.2s ease;
+}
+
+/* Primary search button */
+.btn {
+  background: var(--accent); /* highlight color (theme accent) */
+  color: #05152e; /* dark text for contrast */
+  border-color: transparent; /* removes default border */
+}
+
+.btn:hover {
+  transform: translateY(-1px); /* slight lift on hover */
+}
+
+/* Secondary “Use my location” button */
+.btnGhost {
+  background: transparent;
   color: var(--text);
-  border: 1px solid rgba(255,255,255,0.08);
-  padding: 10px 12px; border-radius: 10px;
 }
-.btn, .btnGhost{
-  border-radius: 10px; padding: 10px 14px; cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.12);
-  transition: transform .15s ease, background .2s ease;
+
+.btnGhost:hover {
+  background: rgba(255, 255, 255, 0.06); /* subtle hover highlight */
 }
-.btn{ background: var(--accent); color: #05152e; border-color: transparent; }
-.btn:hover{ transform: translateY(-1px); }
-.btnGhost{ background: transparent; color: var(--text); }
-.btnGhost:hover{ background: rgba(255,255,255,0.06); }

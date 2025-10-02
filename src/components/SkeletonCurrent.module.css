@@ -1,0 +1,88 @@
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for SkeletonCurrent (loading placeholder card)
+   PURPOSE: Mimic the shape of CurrentCard while data is loading,
+            using a shimmering placeholder effect.
+/*-------------------------------------------------------------------------*/
+
+.card {
+  /* Same background and border as real CurrentCard for consistency */
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.04),
+    rgba(255, 255, 255, 0.02)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 20px;
+}
+
+/* Generic shimmering block base */
+.shimmer {
+  position: relative;
+  overflow: hidden; /* hides animated gradient overflow */
+  background: rgba(255, 255, 255, 0.06); /* dull grayish base color */
+}
+
+/* The moving highlight "shine" effect */
+.shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+
+  /* Diagonal-to-horizontal shine gradient */
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.18),
+    transparent
+  );
+
+  /* Infinite horizontal sweep */
+  animation: sh 1.2s infinite;
+}
+
+/* Animation: move the ::after shine from left -> right */
+@keyframes sh {
+  to {
+    transform: translateX(100%);
+  }
+}
+
+/* --- Size/shape variations mimic CurrentCard’s layout --- */
+
+/* Fake city title block */
+.title {
+  height: 20px;
+  width: 30%;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+/* Grid layout: left = big temp placeholder, right = meta lines */
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Fake large temperature block */
+.big {
+  height: 60px;
+  width: 160px;
+  border-radius: 12px;
+}
+
+/* Right-hand meta info (3 stacked lines) */
+.meta {
+  display: grid;
+  gap: 10px;
+}
+
+/* Individual fake line placeholders */
+.line {
+  height: 12px;
+  width: 180px;
+  border-radius: 8px;
+}

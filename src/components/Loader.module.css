@@ -1,9 +1,34 @@
-/* src/components/Loader.module.css */
-.wrap{ display:flex; gap:10px; align-items:center; color: var(--muted); }
-.spinner{
-  width: 16px; height:16px; border-radius:50%;
-  border: 2px solid rgba(255,255,255,0.4);
-  border-top-color: var(--accent);
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for Loader component
+   PURPOSE: Visual spinner + text label for "loading" states.
+   HOW IT FITS IN:
+   - Pairs with Loader.jsx
+   - Wraps a text label and a circular spinner animation
+/*-------------------------------------------------------------------------*/
+
+.wrap {
+  /* Horizontal layout for spinner + text */
+  display: flex;
+  gap: 10px; /* space between spinner and label */
+  align-items: center; /* vertically center text with spinner */
+  color: var(--muted); /* lighter tone so it’s not too loud */
+}
+.spinner {
+  /* Circle base */
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  /* Ring effect: solid border with one colored slice */
+  border: 2px solid rgba(255, 255, 255, 0.4); /* pale base ring */
+  border-top-color: var(--accent); /* highlight for spinner effect */
+
+  /* Continuous spin animation */
   animation: spin 1s linear infinite;
 }
-@keyframes spin { to { transform: rotate(360deg);} }
+
+/* Simple infinite rotation */
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

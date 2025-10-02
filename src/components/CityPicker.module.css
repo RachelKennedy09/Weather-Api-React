@@ -1,0 +1,80 @@
+/*-------------------------------------------------------------------------*/
+/* WHAT: Styles for CityPicker modal overlay
+   HOW IT FITS IN:
+   - Works with CityPicker.jsx to show a centered panel with backdrop
+   - Scoped via CSS modules, so these classes only apply inside CityPicker
+   - Uses CSS variables (e.g. --card, --text, --muted, --shadow) so theme 
+     can be adjusted globally without touching component styles
+/*-------------------------------------------------------------------------*/
+
+.backdrop {
+  /* Cover full viewport */
+  position: fixed;
+  inset: 0; /*shorthand: top/right/bottom/left = 0 */
+  background: rgba(0, 0, 0, 0.5); /*semi-transparent black backdrop */
+  display: grid; /* grid flow */
+  place-items: center; /* centers .panel in both axes */
+  z-index: 50; /* high layer to sit above app UI */
+}
+.panel {
+  /* Responsive width: max 520px, but shrink if viewport smaller */
+  width: min(520px, 92vw);
+  background: var(--card); /* theme variable */
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  box-shadow: var(--shadow); /* nice depth */
+  overflow: hidden; /* keeps corners rounded even if content scrolls */
+}
+.header,
+.footer {
+  /* Shared header/footer style: padding + flexbox */
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.close,
+.cancel {
+  /* Both header close "X" and footer cancel share same style */
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  padding: 6px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+.list {
+  /* Scrollable middle list of cities */
+  max-height: 50vh; /* if too many results, scroll instead of overflow screen */
+  overflow: auto;
+  padding: 8px;
+  margin: 0;
+  list-style: none; /* remove bullets */
+}
+.item {
+  /* Each city choice as a full-width button style */
+  width: 100%;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 10px 12px;
+  cursor: pointer;
+  /* Align label + coords neatly */
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.item:hover {
+  /* Hover feedback to show it's clickable */
+  background: rgba(255, 255, 255, 0.06);
+}
+.label {
+  font-weight: 600; /* make city name stand out */
+}
+.sub {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
