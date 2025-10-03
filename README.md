@@ -216,11 +216,11 @@ Use your browser’s search (Ctrl+F / Cmd+F) or click the links above to jump di
 
 - <b>Loading States -> </b> Skeleton loaders + spinners for smooth UX.
 
--<b>Error Handling -> </b> Friendly error messages for missing/invalid API keys, rate limits, bad city names, or network errors.
+- <b>Error Handling -> </b> Friendly error messages for missing/invalid API keys, rate limits, bad city names, or network errors.
 
 - <b>Persistence -> </b> Last searched city + unit choice remembered across sessions.
 
--<b> Accessibility -> </b> ARIA roles, focus outlines, and keyboard-friendly controls.
+- <b> Accessibility -> </b> ARIA roles, focus outlines, and keyboard-friendly controls.
 
 ## Project organization
 
@@ -246,7 +246,6 @@ Trello : https://trello.com/invite/b/68d6da578ba85414121f9624/ATTI6edf943782d601
   Combined YouTube tutorials, GPT guidance, and self-debugging. While I needed a lot of help, I absorbed valuable patterns and problem-solving strategies along the way.
 
 - <b>Github Workflow: </b> Learned about and added branch protections + practiced CI/CD workflow
-- ![alt text](image.png)
 - Added issue/PR templates
 
 - <b>Debugging & Persistence: </b> Faced many bugs but worked through them step by step. I’m proud that I didn’t give up and always found a way forward.
