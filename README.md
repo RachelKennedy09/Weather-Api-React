@@ -9,12 +9,35 @@ This project was a deep dive into React best practices, error handling, and API 
 
 Built with Create React App (CRA).
 
-👉 **[Live Demo] coming soon**  
+👉 **[Live Demo](https://neatherwetwork.netlify.app/)**  
 👉 **[Online Documentation / Detailed Notes](https://github.com/RachelKennedy09/Weather-Api-React/blob/main/README.md)**
+
+## 🚀 Deployment
+
+This app is built with Create React App (CRA) and can be deployed on **Netlify** in two ways.
+
+### Option A — Deploy via GitHub (recommended)
+1. Push this repository to GitHub.
+2. In [Netlify](https://app.netlify.com/):  
+   - **Add new site -> Import from Git.**  
+   - Select this repo.  
+3. Configure build settings:
+   - **Build command:** `npm run build`  
+   - **Publish directory:** `build`  
+4. Add your environment variable (required):  
+   - In Netlify -> **Site settings -> Build & deploy → Environment -> Edit variables**  
+   - Add:  
+     REACT_APP_OWM_KEY=your_api_key_here
+    
+5. Trigger a deploy. Netlify will build and host your app at a `.netlify.app` URL.
+
+
 
 ## 🔍 Search / Table of Contents
 
 - [Weather App (React + OpenWeather API)](#weather-app-react--openweather-api)
+  - [🚀 Deployment](#-deployment)
+    - [Option A — Deploy via GitHub (recommended)](#option-a--deploy-via-github-recommended)
   - [🔍 Search / Table of Contents](#-search--table-of-contents)
   - [Getting Started / Prerequisites](#getting-started--prerequisites)
   - [Installation](#installation)
@@ -195,7 +218,7 @@ App.test.js # Sample smoke test
 
 ## Project organization
 
-Trello :
+Trello : https://trello.com/invite/b/68d6da578ba85414121f9624/ATTI6edf943782d601a11a1760099410f1764690D109/weather-api-react
 
 # Notes & Learnings
 
