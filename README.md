@@ -1,9 +1,4 @@
-<!-- 1st- created trello cards to set up organization and visualize the project ahead of time.
 
-Note: learned debouncing : Debouncing = waiting a short delay before running a function.
-Think of debouncing like waiting to see if someone is finished talking before replying
-
-learned geocoding: In the OpenWeatherMap API, you need geocoding to turn the city a user types into coordinates, because the weather endpoints work best with lat and lon. -->
 
 # Weather App (React + OpenWeather API)
 
@@ -14,8 +9,34 @@ This project was a deep dive into React best practices, error handling, and API 
 
 Built with Create React App (CRA).
 
-👉 **[Live Demo](https://your-deployment-url-here)**  
-👉 **[Documentation / Detailed Notes](./README.md)** 
+👉 **[Live Demo] coming soon**  
+👉 **[Online Documentation / Detailed Notes](https://github.com/RachelKennedy09/Weather-Api-React/blob/main/README.md)**
+
+## 🔍 Search / Table of Contents
+
+- [Weather App (React + OpenWeather API)](#weather-app-react--openweather-api)
+  - [🔍 Search / Table of Contents](#-search--table-of-contents)
+  - [Getting Started / Prerequisites](#getting-started--prerequisites)
+  - [Installation](#installation)
+    - [1. Clone the repo](#1-clone-the-repo)
+    - [2. Install dependencies](#2-install-dependencies)
+    - [3. Set up environment variables](#3-set-up-environment-variables)
+    - [4. Run the app](#4-run-the-app)
+  - [Project Structure](#project-structure)
+  - [Testing](#testing)
+    - [SearchBar.test.jsx](#searchbartestjsx)
+    - [ErrorBanner.test.jsx](#errorbannertestjsx)
+    - [UnitToggle.test.jsx](#unittoggletestjsx)
+    - [ForecastStrip.test.jsx](#forecaststriptestjsx)
+  - [Tech Stack \& Libraries](#tech-stack--libraries)
+  - [Features](#features)
+  - [Project organization](#project-organization)
+- [Notes \& Learnings](#notes--learnings)
+  - [Future Improvements](#future-improvements)
+  - [Design Notes](#design-notes)
+
+Use your browser’s search (Ctrl+F / Cmd+F) or click the links above to jump directly to the section.
+
 
 ## Getting Started / Prerequisites
 
@@ -85,9 +106,73 @@ App.test.js # Sample smoke test
 
 ## Testing
 
-- Run tests (npm test)
-- NOTE: I tested search bar ( making sure it renders the Search button inside the search form )
+- TODO IN TERMINAL CONSOLE: Run test (npm test)
+  
+### SearchBar.test.jsx
 
+- Renders Search button inside form
+
+- Submits trimmed input text to parent handler
+
+- Calls “Use my location” handler on click
+
+### ErrorBanner.test.jsx
+
+- Renders nothing when message is empty
+
+- Displays correct error message when provided
+
+### UnitToggle.test.jsx
+
+- Renders both °C and °F buttons
+
+- Applies active styles correctly based on units prop
+
+- Calls parent handler with correct unit on click
+
+### ForecastStrip.test.jsx
+
+- Renders forecast items with correct day labels
+
+- Displays hi/lo temperatures with unit suffix
+
+
+## Tech Stack & Libraries
+
+**Core Framework**
+- [React](https://react.dev/) (via Create React App)
+
+**API**
+- [OpenWeatherMap API](https://openweathermap.org/api)  
+  - Geocoding (city → lat/lon)  
+  - Current Weather Data  
+  - 5-day / 3-hour Forecast  
+
+**Styling**
+- CSS Modules (`*.module.css`) for scoped, component-level styling  
+- Custom CSS tokens (colors, radius, shadows) in `App.module.css`  
+
+**State & Data Handling**
+- React hooks (`useState`, `useEffect`)  
+- LocalStorage (persist units + last location)  
+- Promise-based fetch helpers for API calls  
+
+**UX Enhancements**
+- Custom Loader (spinner) component  
+- Skeleton placeholders for Current Weather + Forecast cards  
+- ErrorBanner with friendly messages  
+- Accessible toggle buttons + ARIA roles  
+
+**Testing**
+- [Jest](https://jestjs.io/)  
+- [React Testing Library](https://testing-library.com/)  
+- [jest-dom](https://github.com/testing-library/jest-dom) custom matchers  
+
+**Tooling / Workflow**
+- GitHub (repo hosting, issue/PR templates, branch protections)  
+- Trello (task tracking + project organization)  
+- ESLint (default CRA linting rules)  
+  
 ## Features
 
 - <b>Search by City -></b> Fetch current weather conditions by typing a city name.
@@ -133,8 +218,7 @@ Trello :
 
 - <b>Github Workflow: </b> Learned about and added branch protections + practiced CI/CD workflow
 - ![alt text](image.png)
-  
-- Added issue/PR templates 
+- Added issue/PR templates
 
 - <b>Debugging & Persistence: </b> Faced many bugs but worked through them step by step. I’m proud that I didn’t give up and always found a way forward.
 
