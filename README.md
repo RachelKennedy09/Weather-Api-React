@@ -1,5 +1,3 @@
-
-
 # Weather App (React + OpenWeather API)
 
 A modern weather dashboard built with React and the OpenWeatherMap API.
@@ -17,21 +15,19 @@ Built with Create React App (CRA).
 This app is built with Create React App (CRA) and can be deployed on **Netlify** in two ways.
 
 ### Option A — Deploy via GitHub (recommended)
+
 1. Push this repository to GitHub.
-2. In [Netlify](https://app.netlify.com/):  
-   - **Add new site -> Import from Git.**  
-   - Select this repo.  
+2. In [Netlify](https://app.netlify.com/):
+   - **Add new site -> Import from Git.**
+   - Select this repo.
 3. Configure build settings:
-   - **Build command:** `npm run build`  
-   - **Publish directory:** `build`  
-4. Add your environment variable (required):  
-   - In Netlify -> **Site settings -> Build & deploy → Environment -> Edit variables**  
+   - **Build command:** `npm run build`
+   - **Publish directory:** `build`
+4. Add your environment variable (required):
+   - In Netlify -> **Site settings -> Build & deploy → Environment -> Edit variables**
    - Add:  
      REACT_APP_OWM_KEY=your_api_key_here
-    
 5. Trigger a deploy. Netlify will build and host your app at a `.netlify.app` URL.
-
-
 
 ## 🔍 Search / Table of Contents
 
@@ -59,7 +55,6 @@ This app is built with Create React App (CRA) and can be deployed on **Netlify**
   - [Design Notes](#design-notes)
 
 Use your browser’s search (Ctrl+F / Cmd+F) or click the links above to jump directly to the section.
-
 
 ## Getting Started / Prerequisites
 
@@ -120,17 +115,22 @@ Use your browser’s search (Ctrl+F / Cmd+F) or click the links above to jump di
         format.js             # Helpers for icons, wind conversion,
                                 date formatting
 
-App.jsx # Main app frame + state management
-App.module.css # Theme tokens + layout styles
-index.js # React entry point
-index.css # Global reset/fonts
-setupTests.js # Testing config
-App.test.js # Sample smoke test
+    App.jsx                   # Main app frame + state management
+
+    App.module.css            # Theme tokens + layout styles
+
+    index.js                  # React entry point
+
+    index.css                 # Global reset/fonts
+
+    setupTests.js             # Testing config
+
+    App.test.js               # Sample smoke test
 
 ## Testing
 
 - TODO IN TERMINAL CONSOLE: Run test (npm test)
-  
+
 ### SearchBar.test.jsx
 
 - Renders Search button inside form
@@ -159,43 +159,49 @@ App.test.js # Sample smoke test
 
 - Displays hi/lo temperatures with unit suffix
 
-
 ## Tech Stack & Libraries
 
 **Core Framework**
+
 - [React](https://react.dev/) (via Create React App)
 
 **API**
-- [OpenWeatherMap API](https://openweathermap.org/api)  
-  - Geocoding (city → lat/lon)  
-  - Current Weather Data  
-  - 5-day / 3-hour Forecast  
+
+- [OpenWeatherMap API](https://openweathermap.org/api)
+  - Geocoding (city → lat/lon)
+  - Current Weather Data
+  - 5-day / 3-hour Forecast
 
 **Styling**
-- CSS Modules (`*.module.css`) for scoped, component-level styling  
-- Custom CSS tokens (colors, radius, shadows) in `App.module.css`  
+
+- CSS Modules (`*.module.css`) for scoped, component-level styling
+- Custom CSS tokens (colors, radius, shadows) in `App.module.css`
 
 **State & Data Handling**
-- React hooks (`useState`, `useEffect`)  
-- LocalStorage (persist units + last location)  
-- Promise-based fetch helpers for API calls  
+
+- React hooks (`useState`, `useEffect`)
+- LocalStorage (persist units + last location)
+- Promise-based fetch helpers for API calls
 
 **UX Enhancements**
-- Custom Loader (spinner) component  
-- Skeleton placeholders for Current Weather + Forecast cards  
-- ErrorBanner with friendly messages  
-- Accessible toggle buttons + ARIA roles  
+
+- Custom Loader (spinner) component
+- Skeleton placeholders for Current Weather + Forecast cards
+- ErrorBanner with friendly messages
+- Accessible toggle buttons + ARIA roles
 
 **Testing**
-- [Jest](https://jestjs.io/)  
-- [React Testing Library](https://testing-library.com/)  
-- [jest-dom](https://github.com/testing-library/jest-dom) custom matchers  
+
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/)
+- [jest-dom](https://github.com/testing-library/jest-dom) custom matchers
 
 **Tooling / Workflow**
-- GitHub (repo hosting, issue/PR templates, branch protections)  
-- Trello (task tracking + project organization)  
-- ESLint (default CRA linting rules)  
-  
+
+- GitHub (repo hosting, issue/PR templates, branch protections)
+- Trello (task tracking + project organization)
+- ESLint (default CRA linting rules)
+
 ## Features
 
 - <b>Search by City -></b> Fetch current weather conditions by typing a city name.
