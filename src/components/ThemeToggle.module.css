@@ -1,0 +1,50 @@
+.wrap {
+  display: flex;
+  gap: .5rem;
+  align-items: center;
+  flex-wrap: wrap;     /* allow wrapping onto next line */
+  min-width: 0;        /* critical for ellipsis inside flex */
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--text) 18%, transparent);
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  color: var(--text);
+  cursor: pointer;
+  transition: transform .12s ease, background-color .2s ease, border-color .2s ease;
+  max-width: 140px;    /* keeps chip compact */
+  width: auto;         /* grow to fit but cap at max-width */
+  min-width: 0;        /* enable shrink inside flex parent */
+  white-space: nowrap; /* single line */
+  overflow: hidden;    /* hide overflow */
+  text-overflow: ellipsis; /* show … if too long */
+  line-height: 1.1;
+  font-size: .95rem;
+}
+
+.btn:hover { transform: translateY(-1px); }
+.btn:focus-visible { outline: 3px solid var(--ring); }
+.active { box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 45%, transparent); }
+
+.emoji {
+  font-size: 1rem;
+  line-height: 1;
+  flex: 0 0 auto;      /* don’t shrink emoji */
+}
+
+.label {
+  display: inline-block;
+  min-width: 0;        /* allow label text to shrink */
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Smaller screens: slightly tighter chips */
+@media (max-width: 420px) {
+  .btn { max-width: 110px; padding: .3rem .5rem; font-size: .9rem; }
+}

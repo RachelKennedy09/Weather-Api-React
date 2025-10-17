@@ -1,43 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+    <!-- -------------------------------------------------------------------
+         FILE: public/index.html
+         WHAT: Base HTML template used by Create React App.
+         WHY:  CRA injects your compiled JS/CSS here at build time. We also set
+               metadata (icons, SEO), and an early theme hint to reduce FOUC.
+         HOW:  Keep asset references under %PUBLIC_URL% so paths work in prod.
+               React mounts into <div id="root"></div>.
+         CONNECTS TO:
+               - src/index.js: mounts <App /> and applies theme + --photo
+               - src/App.module.css: consumes data-theme + var(--photo)
+               - src/themeImages.js: bundles background images per theme
+      -------------------------------------------------------------------- -->
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- App identity -->
     <title>The Neather Wetwork</title>
+    <meta name="description" content="A modern React weather dashboard using the OpenWeatherMap API. Search by city or use your location to view current conditions and a 5-day forecast." />
+
+    <!-- Icons & PWA manifest -->
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+
+    <!-- Theming & color-scheme hints -->
+    <meta name="theme-color" content="#0a0f1f" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Social preview (optional; replace image if you add one) -->
+    <meta property="og:title" content="The Neather Wetwork" />
+    <meta property="og:description" content="React + OpenWeatherMap weather app with seasonal themes and live background images." />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="%PUBLIC_URL%/social-card.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Early theme attribute to minimize flash of wrong theme.
+         Note: We only set data-theme here; --photo is applied in src/index.js. -->
+    <script>
+      (function () {
+        try {
+          var stored = localStorage.getItem("theme");
+          var valid = { fall:1, sunny:1, cloudy:1, rain:1, snow:1 };
+          var theme = valid[stored] ? stored : "sunny";
+          document.documentElement.setAttribute("data-theme", theme);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "sunny");
+        }
+      })();
+    </script>
   </head>
+
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+
     <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
+      CRA Notes:
+      - This file is a template; the build injects bundled scripts before </body>.
+      - Use %PUBLIC_URL% for public assets (favicons, manifest, static images).
+      - App content is rendered by React into #root at runtime.
     -->
   </body>
 </html>

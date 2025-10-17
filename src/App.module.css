@@ -17,20 +17,48 @@
   --radius: 16px; /* Default border radius for cards/buttons */
   --shadow: 0 12px 24px rgba(0, 0, 0, 0.35); /* strong card shadows */
   --gap: 16px; /* standard spacing token */
+
+  /* Background photo: JS sets this to url(...) per theme */
+  --photo: none; /* fallback = no image */
 }
 
 /* Root app container (src/App.jsx -> <div className={styles.app}>) */
 .app {
   min-height: 100svh; /* fill viewport height, use svh for mobile safe-area */
-  background: radial-gradient(
-      1200px 600px at 20% -10%,
-      #1b2a52 0%,
-      transparent 70%
-    ),
-    var(--bg); /* gradient accent over base navy */
+  /* Remove opaque backgrounds so the ::before photo is visible */
   color: var(--text);
   display: grid;
   grid-template-rows: auto 1fr auto; /* header, main, footer */
+  transition: background-color 0.25s ease, color 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Background photo/overlay layer (sits behind all content) */
+.app::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0; /* under app content, above page background */
+  background-image:
+    /* dark overlay for readability */ linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.45) 0%,
+      rgba(0, 0, 0, 0.38) 40%,
+      rgba(0, 0, 0, 0.55) 100%
+    ),
+    var(--photo); /* <-- JS controls this */
+  background-color: var(--bg); /* solid fallback behind photo */
+  background-size: cover;
+  background-position: center 20%;
+  background-repeat: no-repeat;
+  filter: saturate(0.95) contrast(1.05);
+}
+
+/* Ensure all children render above the ::before layer */
+.app > * {
+  position: relative;
+  z-index: 1;
 }
 
 .hint {
@@ -51,7 +79,7 @@
   letter-spacing: 0.5px; /* subtle tracking for polish */
 }
 
-/* Wrap search bar + unit toggle */
+/* Wrap search bar + unit/theme toggles */
 .controls {
   display: flex;
   gap: var(--gap);
@@ -76,4 +104,76 @@
 :focus-visible {
   outline: 3px solid var(--ring);
   outline-offset: 2px;
+}
+
+/*==========================
+  FULL-APP THEMES (colors)
+  JS sets --photo per theme
+==========================*/
+
+/* ===== THEME: FALL (orange) ===== */
+:root[data-theme="fall"] {
+  --bg: #141008;
+  --card: #1b140b;
+  --text: #fff3e6;
+  --muted: #f1d1ae;
+  --accent: #f59e0b;
+  --ring: #f7d29a;
+}
+
+/* ===== THEME: SUNNY (blue) ===== */
+:root[data-theme="sunny"] {
+  --bg: #0a0f1f;
+  --card: #111831;
+  --text: #e7eefc;
+  --muted: #9db0d0;
+  --accent: #3b82f6;
+  --ring: #b9d2fb;
+}
+
+/* ===== THEME: CLOUDY (grey) ===== */
+:root[data-theme="cloudy"] {
+  --bg: #0d0f13;
+  --card: #141820;
+  --text: #e9edf5;
+  --muted: #b3bdcf;
+  --accent: #94a3b8; /* slate */
+  --ring: #c6d0e0;
+}
+
+/* ===== THEME: RAIN (purple) ===== */
+:root[data-theme="rain"] {
+  --bg: #0c0a12;
+  --card: #141126;
+  --text: #eee9ff;
+  --muted: #c9bff0;
+  --accent: #8b5cf6;
+  --ring: #d1c1fb;
+}
+
+/* ===== THEME: SNOW (white) ===== */
+:root[data-theme="snow"] {
+  --bg: #0a0d12; /* keep app dark for contrast */
+  --card: #0f141b; /* frosty card */
+  --text: #f6fbff;
+  --muted: #cfe0ea;
+  --accent: #e5f4ff; /* icy highlight */
+  --ring: #cfeaff;
+}
+
+/* Glassiness for readability over photos (match actual class names if different) */
+.card,
+.strip .dayCard,
+.header,
+.footer,
+.err,
+.hint {
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+.card {
+  background: color-mix(in oklab, var(--card) 83%, transparent);
+  border: 1px solid color-mix(in oklab, var(--text) 10%, transparent);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }

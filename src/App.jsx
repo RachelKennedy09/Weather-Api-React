@@ -20,6 +20,7 @@
 
 import { useState, useEffect } from "react";
 import styles from "./App.module.css";
+import ThemeToggle from "./components/ThemeToggle";
 
 import SearchBar from "./components/SearchBar";
 import UnitToggle from "./components/UnitToggle";
@@ -295,6 +296,7 @@ function App() {
   // ---------------------------
   return (
     <div className={styles.app}>
+      
       <header className={styles.header}>
         <h1 className={styles.brand}>The Neather Wetwork</h1>
         <div className={styles.controls}>
@@ -304,6 +306,7 @@ function App() {
           />
           {/* Why: unit togggle here keeps global state centralized in App */}
           <UnitToggle units={units} setUnits={setUnits} />
+          <ThemeToggle />
         </div>
       </header>
       {/*  If there are multiple city matches, show a modal/panel to choose */}
@@ -338,7 +341,7 @@ function App() {
           </p>
         )}
       </main>
-{/*  footer shows "Last updated" for transparency */}
+      {/*  footer shows "Last updated" for transparency */}
       <footer className={styles.footer}>
         <small>
           Data: OpenWeatherMap ·{" "}

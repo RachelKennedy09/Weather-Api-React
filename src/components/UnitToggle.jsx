@@ -23,7 +23,7 @@ export default function UnitToggle({ units, setUnits }) {
   return (
     <div className={styles.toggle} role="group" aria-label="Units">
       <button
-        className={`{styles.btn} ${isC ? styles.active : ""}`} // Active style if Celsius selected
+        className={`${styles.btn} ${isC ? styles.active : ""}`} // Active style if Celsius selected
         type="button"
         onClick={() => setUnits("metric")}
       >

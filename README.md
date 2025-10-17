@@ -91,11 +91,17 @@ Use your browser’s search (Ctrl+F / Cmd+F) or click the links above to jump di
         SkeletonCurrent.jsx   # Placeholder for current card
                                 while loading
         SkeletonForecast.jsx  # Placeholder for forecast while loading
+        ThemeToggle.jsx       # Component for switching between seasonal/weather-based themes
         UnitToggle.jsx        # Switch between °C and °F
 
       utils/
         format.js             # Helpers for icons, wind conversion,
                                 date formatting
+
+      assets/                 # theme images
+        themes/
+          .jpg
+    
 
     App.jsx                   # Main app frame + state management
 
@@ -158,6 +164,7 @@ Use your browser’s search (Ctrl+F / Cmd+F) or click the links above to jump di
 
 - CSS Modules (`*.module.css`) for scoped, component-level styling
 - Custom CSS tokens (colors, radius, shadows) in `App.module.css`
+  
 
 **State & Data Handling**
 
@@ -204,6 +211,10 @@ Use your browser’s search (Ctrl+F / Cmd+F) or click the links above to jump di
 
 - <b> Accessibility -> </b> ARIA roles, focus outlines, and keyboard-friendly controls.
 
+- <b>Theme Toggle -> </b> Users can switch between seasonal and weather-inspired color themes:  
+  **☀️ Sunny (blue), ☁️ Cloudy (grey), 🌧️ Rain (purple), ❄️ Snow (white), 🍂 Fall (orange)**.  
+  Each theme updates both the app’s colors and the background photo dynamically.
+
 ## Project organization
 
 Trello : https://trello.com/invite/b/68d6da578ba85414121f9624/ATTI6edf943782d601a11a1760099410f1764690D109/weather-api-react
@@ -232,6 +243,11 @@ Trello : https://trello.com/invite/b/68d6da578ba85414121f9624/ATTI6edf943782d601
 
 - <b>Debugging & Persistence: </b> Faced many bugs but worked through them step by step. I’m proud that I didn’t give up and always found a way forward.
 
+-  <b>Dynamic Theme Toggle:</b> Implementing a full theme switcher with background images was challenging because CSS Modules couldn’t directly reference public assets in a stable way.  
+  I refactored the design to use a JavaScript-driven approach — importing images from `src/assets/themes` and setting them as CSS variables (`--photo`).  
+  This avoided build errors and ensured instant, smooth transitions when toggling between themes (Fall, Sunny, Cloudy, Rain, Snow).  
+  It was a big lesson in the difference between static asset handling and dynamic runtime styles in React.
+
 ## Future Improvements
 
 - Add hourly forecast view.
@@ -251,3 +267,6 @@ Trello : https://trello.com/invite/b/68d6da578ba85414121f9624/ATTI6edf943782d601
 - Consistent use of CSS Modules for component-scoped styles.
 
 - Theme tokens (--bg, --card, --accent, etc.) keep design cohesive.
+  
+- Each theme features its own color palette and background image for immersion.  
+  The background photo is applied via a CSS variable, ensuring fast and consistent visual updates.
